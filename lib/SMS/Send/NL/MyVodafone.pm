@@ -6,12 +6,12 @@ use WWW::Mechanize ();
 
 use vars qw{$VERSION};
 BEGIN {
-   $VERSION = '0.01';
+   $VERSION = '0.02';
 }
 
 # Starting URI
-my $START = 'https://my.vodafone.nl/Prive/My_Vodafone/';
-my $FORM  = 'https://my.vodafone.nl/Prive/My_Vodafone/gratissms/';
+my $START = 'https://my.vodafone.nl/prive/my_vodafone/';
+my $FORM  = 'https://my.vodafone.nl/prive/my_vodafone/gratis_sms_versturen';
 
 ########################################################################
 
@@ -63,7 +63,7 @@ sub _send_login {
 
    # Submit the login form
    $self->{mech}->submit_form(
-      form_number => 1,
+      form_name   => 'login',
       fields      => {
          username => $self->{login},
          password => $self->{password},
