@@ -6,7 +6,7 @@ use WWW::Mechanize ();
 
 use vars qw{$VERSION};
 BEGIN {
-   $VERSION = '0.02';
+   $VERSION = '0.03';
 }
 
 # Starting URI
@@ -67,7 +67,6 @@ sub _send_login {
       fields      => {
          username => $self->{login},
          password => $self->{password},
-         inloggen => 'inloggen',
          },
       );
 
