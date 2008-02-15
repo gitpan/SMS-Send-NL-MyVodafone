@@ -6,12 +6,12 @@ use WWW::Mechanize ();
 
 use vars qw{$VERSION};
 BEGIN {
-   $VERSION = '0.03';
+   $VERSION = '0.04';
 }
 
 # Starting URI
 my $START = 'https://my.vodafone.nl/prive/my_vodafone/';
-my $FORM  = 'https://my.vodafone.nl/prive/my_vodafone/gratis_sms_versturen';
+my $FORM  = 'https://my.vodafone.nl/prive/my_vodafone/gratis_sms_versturen_smoothbox';
 
 ########################################################################
 
@@ -92,12 +92,12 @@ sub send_sms {
 
    # Get to the Web2TXT form
    $self->{mech}->get( $FORM );
-   unless ( $self->{mech}->content =~ /Gratis SMS Versturen/ ) {
+   unless ( $self->{mech}->content =~ /gratis sms'en/ ) {
       Carp::croak("Could not locate the SMS send form");
    }
 
    # Fill out the message form
-   my $form = $self->{mech}->form_number(2)
+   my $form = $self->{mech}->form_number(1)
       or Carp::croak("Failed to find message form on page");
    $form->value(phoneNumber => $recipient);
    $form->value(body        => $message);
